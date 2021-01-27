@@ -20,7 +20,13 @@ def display_content(course, chapter, section):
 
 
 def run_app():
-    st.sidebar.title("Visual Theory")
+    about = '''
+    Seeing the Examples is a website aiming at illustrating the math concepts and theories 
+    using interactive examples. The website is under construction.  
+    '''.replace('\n', ' ')
+    
+    st.sidebar.title("Seeing the Examples")
+    st.sidebar.write(about)
     course, chapter, section = content_select()
     display_content(course, chapter, section)
     return 

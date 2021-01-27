@@ -31,26 +31,7 @@ def generate_plot_data():
 
 
 def chance_events():
-    st.write(paragraph1)
+    st.write("Under construction")
 
-    ## TODO add images and buttons
-    coin = Coin(0.5)
-    coin.flip_1k()
-
-    ## TODO clean up
-    hist_data = pd.Series(coin.outcomes).value_counts()
-    true_prob = pd.Series({
-        'Head': coin.probs[0] * len(coin.outcomes),
-        'Tail': coin.probs[1] * len(coin.outcomes)
-    })
-    st.bar_chart(hist_data)
-    st.bar_chart(true_prob)
     return 
 
-
-if __name__ == '__main__':
-    coin = Coin(0.5)
-    coin.flip_1k()
-    df = generate_plot_data(coin.outcomes)
-
-    print(df)
