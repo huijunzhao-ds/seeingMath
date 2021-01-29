@@ -21,14 +21,20 @@ def display_content(course, chapter, section):
 
 def run_app():
     about = '''
-    Seeing the Examples is a website aiming at illustrating the math concepts and theories 
-    using interactive examples. The website is under construction.  
-    '''.replace('\n', ' ')
+    Seeing Math aims at illustrating the math concepts and theories 
+    using interactive visualization. The website is still under construction.  
+    '''
     
-    st.sidebar.title("Seeing the Examples")
+    contributors = '''
+        #### Contributors
+        - Huijun Zhao
+    '''
+    st.sidebar.title("Seeing Math")
     st.sidebar.write(about)
     course, chapter, section = content_select()
     display_content(course, chapter, section)
+
+    st.sidebar.write(contributors)
     return 
 
 
