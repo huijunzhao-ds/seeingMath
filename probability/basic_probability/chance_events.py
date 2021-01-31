@@ -12,15 +12,15 @@ class Coin:
         self.probs = [prob_h, 1-prob_h]
         self.outcomes = []  
 
-
+    
     def flip(self):
         self.outcomes.append(int(np.random.random() > self.probs[0]))
-
+                
 
     def flip_n(self, n:int):
         for _ in range(n):
             self.flip()
-
+            
 
     def generate_plot_data(self):
         return pd.DataFrame({'Head':[len(self.outcomes) * self.probs[0],
@@ -48,8 +48,6 @@ coin_tutorial = '''
 
 def coin_simulate():
     left_column, right_column = st.beta_columns(2)
-    left_column.empty()
-    right_column.empty()
     
     p = left_column.slider('True probability for Head', 
                            min_value=0.0, max_value=1.0, value=0.5)
@@ -59,6 +57,7 @@ def coin_simulate():
     if n > 0:
         coin.flip_n(n)
         left_column.image(coin.imgs[coin.outcomes[-1]], width=200)
+           
         hist_data = coin.generate_plot_data()
         right_column.bar_chart(hist_data, 
                                height=400,
