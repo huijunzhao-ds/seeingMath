@@ -14,7 +14,7 @@ class Coin:
 
 
     def flip(self):
-        self.outcomes.append(int(np.random.random() < self.probs[0]))
+        self.outcomes.append(int(np.random.random() > self.probs[0]))
 
 
     def flip_n(self, n:int):
@@ -23,57 +23,27 @@ class Coin:
 
 
     def generate_plot_data(self):
-        return pd.DataFrame({'Truth':[len(self.outcomes) * self.probs[0], 
-                                      len(self.outcomes) * self.probs[1]], 
-                             'Simulation': [len(self.outcomes) - sum(self.outcomes), 
-                                            sum(self.outcomes)]}, 
-                             index=['Head', 'Tail']).T
+        return pd.DataFrame({'Head':[len(self.outcomes) * self.probs[0],
+                                     len(self.outcomes) - sum(self.outcomes)], 
+                             'Tail': [len(self.outcomes) * self.probs[1], 
+                                      sum(self.outcomes)]}, 
+                             index=['Simulation', 'Truth'])
 
-
-class Dice:
-    def __init__(self, probs):
-        self.results = ['Head', 'Tail']
-        ## TODO find images
-        self.imgs = [Image.open('probability/images/head.png'),
-                    Image.open('probability/images/tail.png')]
-        self.probs = probs
-        self.outcomes = []  
-
-
-    def roll(self):
-        p = np.random.random()
-        for res, tp in enumerate(self.probs):
-            if p > tp:
-                p -= tp
-            else:
-                self.outcomes.append(res)
-                return
-
-
-    def roll_n(self, n:int):
-        for _ in range(n):
-            self.roll()
-
-
-    def generate_plot_data(self):
-        ## TODO
-        return pd.DataFrame({'Truth':[len(self.outcomes) * p for p in self.probs], 
-                             'Simulation': [len(self.outcomes) - sum(self.outcomes), 
-                                            sum(self.outcomes)]}, 
-                             index=[1, 2, 3, 4, 5, 6]).T
 
 
 coin_tutorial = '''
-    Probability is the math formalization of randomness. We introduce the classic coin 
-    toss simulation below as our first random experiment.
+    *Probability Theory* is the math formalization of *randomness*. We introduce 
+    the classic coin toss simulation below as our first random experiment.
 
-    The two possible outcomes, or *events* in Probability Theory, are Head and Tail.
-    The *probability* of an event is a number between 0 and 1 indicating how likely 
+    The two possible outcomes, or __events__ in Probability Theory, are Head and Tail.
+    The __probability__ of an event is a number between 0 and 1 indicating how likely 
     the event will happen, where 0 indicates impossibility and 1 indicates certainty. 
-    For a fair coin, the probability of Head is 0.5, so is that of Tail. For an unfair 
-    or weighted coin, you can set the probability of Head in the slider bar below.
+    For a *fair* coin, the probability of Head is 0.5, equaling to that of Tail. For an
+    *unfair* or *weighted* coin, you can set the probability of Head in the slider bar below.
 
-    
+    Flipping the coin for multiple times, we may get more or less Heads than the true probability.
+    But as the number of flips increases, the long-run frequency gets closer and closer to, or 
+    equivalently __converges to__ the true probabilty, as shown in the histogram on the right below. 
 '''
 
 def coin_simulate():
@@ -99,19 +69,8 @@ def coin_simulate():
                                height=400,
                                use_container_width=True)
 
-## TODO write tutorial
-dice_tutorial = '''
-
-'''
-
-
-def dice_simulate():
-    return 
-
 
 def chance_events():
     st.write(coin_tutorial)
     coin_simulate()
-    st.write(dice_tutorial)
-    dice_simulate()
     return 
