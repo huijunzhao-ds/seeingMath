@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+from PIL import Image 
+
+
 class Dice:
     def __init__(self, probs):
         self.results = ['Head', 'Tail']

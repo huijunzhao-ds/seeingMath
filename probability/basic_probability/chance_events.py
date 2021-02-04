@@ -69,7 +69,14 @@ def coin_simulate():
                                use_container_width=True)
 
 
+to_next = '''
+    If we assign the number 1 to heads and 0 to tails, what we get is a __random variable__, which
+    is the topic for next section.
+'''
+
+
 def chance_events():
     st.write(coin_tutorial)
     coin_simulate()
+    st.write(to_next)
     return 

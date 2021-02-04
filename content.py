@@ -15,18 +15,23 @@ CONTENT ={
 
     'Probability': {
         'Basic Probability': ['Chance Events', 
+                              'Random Variables',
                               'Expectation', 
                               'Variance', 
                               'Conditional Probability'], 
-        'Distributions': ['Random Variable', 
-                          'Discrete and Continuous', 
+
+        'Distributions': ['Discrete Distributions' 
+                          'Continuous Distributions', 
                           'Central Limit Theorem'],
+
         'Frequentist Inference': ['Point Estimation', 
                                   'Confidence Interval',
                                   'The Bootstrap'],
+
         'Bayesian Inference':["Bayes's Theorem",
                               "Likelihood Function",
                               "Prior to Posterior"],
+                              
         'Regression Analysis':['Ordinary Least Squares',
                                'Correlation',
                                'Analysis of Variance'],
